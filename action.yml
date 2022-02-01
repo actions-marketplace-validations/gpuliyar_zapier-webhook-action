@@ -1,0 +1,27 @@
+name: Call Zapier Webhook
+author: gpuliyar
+description: Github Action to call Zapier Webhook (and post messages if needed)
+branding:
+  icon: git-pull-request
+  color: blue
+inputs:
+  webhook-id:
+    description: Zapier Webhook ID https://hooks.zapier.com/hooks/catch/{webhook-id}
+    required: true
+  method:
+    description: Zapier webhook call HTTP Method - GET, POST, or PUT
+    required: true
+    default: GET
+  silent:
+    description: If the developer prefers getting an empty response - true or false
+    required: false
+    default: false
+  message:
+    description: Payload to send to the webhook
+    required: false
+outputs:
+  state:
+    description: Response status of the Zapier webhook call
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
